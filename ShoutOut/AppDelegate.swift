@@ -1,10 +1,6 @@
 //
 //  AppDelegate.swift
 //  ShoutOut
-//
-//  Created by Andrew Bancroft on 9/25/16.
-//  Copyright © 2016 pluralsight. All rights reserved.
-//
 
 import UIKit
 

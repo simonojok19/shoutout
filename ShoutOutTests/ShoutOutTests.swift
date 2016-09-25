@@ -1,10 +1,6 @@
 //
 //  ShoutOutTests.swift
 //  ShoutOutTests
-//
-//  Created by Andrew Bancroft on 9/25/16.
-//  Copyright © 2016 pluralsight. All rights reserved.
-//
 
 import XCTest
 @testable import ShoutOut
