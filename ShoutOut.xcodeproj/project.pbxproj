@@ -77,12 +77,10 @@
 		F2530B651D985E400029B14E /* ShoutOut */ = {
 			isa = PBXGroup;
 			children = (
+				F2530B871D985E7F0029B14E /* Model */,
+				F2530B881D985E890029B14E /* Views & Assets */,
+				F2530B861D985E670029B14E /* View Controllers */,
 				F2530B661D985E400029B14E /* AppDelegate.swift */,
-				F2530B681D985E400029B14E /* ViewController.swift */,
-				F2530B6A1D985E400029B14E /* Main.storyboard */,
-				F2530B6D1D985E400029B14E /* Assets.xcassets */,
-				F2530B6F1D985E400029B14E /* LaunchScreen.storyboard */,
-				F2530B721D985E400029B14E /* Info.plist */,
 			);
 			path = ShoutOut;
 			sourceTree = "<group>";
@@ -94,6 +92,32 @@
 				F2530B7D1D985E410029B14E /* Info.plist */,
 			);
 			path = ShoutOutTests;
+			sourceTree = "<group>";
+		};
+		F2530B861D985E670029B14E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F2530B681D985E400029B14E /* ViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		F2530B871D985E7F0029B14E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F2530B881D985E890029B14E /* Views & Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F2530B6A1D985E400029B14E /* Main.storyboard */,
+				F2530B6D1D985E400029B14E /* Assets.xcassets */,
+				F2530B6F1D985E400029B14E /* LaunchScreen.storyboard */,
+				F2530B721D985E400029B14E /* Info.plist */,
+			);
+			name = "Views & Assets";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
