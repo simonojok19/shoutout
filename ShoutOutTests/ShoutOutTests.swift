@@ -18,7 +18,7 @@ class ShoutOutTests: XCTestCase {
 		let storyboard = UIStoryboard(name: "Main",
 		                              bundle: Bundle.main)
 		let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
-		systemUnderTest = navigationController.viewControllers[0] as! ShoutOutDraftsViewController
+        systemUnderTest = (navigationController.viewControllers[0] as! ShoutOutDraftsViewController)
 		
 		UIApplication.shared.keyWindow!.rootViewController = systemUnderTest
 		

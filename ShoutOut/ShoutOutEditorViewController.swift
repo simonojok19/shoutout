@@ -15,7 +15,7 @@ class ShoutOutEditorViewController: UIViewController {
 		super.viewDidLoad()
 		
 		messageTextView.layer.borderWidth = CGFloat(0.5)
-		messageTextView.layer.borderColor = UIColor(colorLiteralRed: 204/255, green: 204/255, blue: 204/255, alpha: 1.0).cgColor
+		messageTextView.layer.borderColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0).cgColor
 		messageTextView.layer.cornerRadius = 5
 		messageTextView.clipsToBounds = true
 	}
