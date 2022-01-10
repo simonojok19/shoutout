@@ -15,6 +15,8 @@
 		F2530B8C1D9861E40029B14E /* ShoutOutDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2530B891D9861E40029B14E /* ShoutOutDetailsViewController.swift */; };
 		F2530B8D1D9861E40029B14E /* ShoutOutDraftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2530B8A1D9861E40029B14E /* ShoutOutDraftsViewController.swift */; };
 		F2530B8E1D9861E40029B14E /* ShoutOutEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2530B8B1D9861E40029B14E /* ShoutOutEditorViewController.swift */; };
+		F4CA7A55278C582F00FEEC6D /* ShoutOut.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4CA7A53278C582E00FEEC6D /* ShoutOut.xcdatamodeld */; };
+		F4CA7A59278C58C900FEEC6D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CA7A58278C58C900FEEC6D /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		F2530B891D9861E40029B14E /* ShoutOutDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoutOutDetailsViewController.swift; sourceTree = "<group>"; };
 		F2530B8A1D9861E40029B14E /* ShoutOutDraftsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoutOutDraftsViewController.swift; sourceTree = "<group>"; };
 		F2530B8B1D9861E40029B14E /* ShoutOutEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoutOutEditorViewController.swift; sourceTree = "<group>"; };
+		F4CA7A54278C582F00FEEC6D /* ShoutOut.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoutOut.xcdatamodel; sourceTree = "<group>"; };
+		F4CA7A58278C58C900FEEC6D /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 				F2530B881D985E890029B14E /* Views & Assets */,
 				F2530B861D985E670029B14E /* View Controllers */,
 				F2530B661D985E400029B14E /* AppDelegate.swift */,
+				F4CA7A58278C58C900FEEC6D /* CoreDataStack.swift */,
 			);
 			path = ShoutOut;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 		F2530B871D985E7F0029B14E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F4CA7A53278C582E00FEEC6D /* ShoutOut.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -233,8 +239,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4CA7A55278C582F00FEEC6D /* ShoutOut.xcdatamodeld in Sources */,
 				F2530B8C1D9861E40029B14E /* ShoutOutDetailsViewController.swift in Sources */,
 				F2530B671D985E400029B14E /* AppDelegate.swift in Sources */,
+				F4CA7A59278C58C900FEEC6D /* CoreDataStack.swift in Sources */,
 				F2530B8E1D9861E40029B14E /* ShoutOutEditorViewController.swift in Sources */,
 				F2530B8D1D9861E40029B14E /* ShoutOutDraftsViewController.swift in Sources */,
 			);
@@ -480,6 +488,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F4CA7A53278C582E00FEEC6D /* ShoutOut.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F4CA7A54278C582F00FEEC6D /* ShoutOut.xcdatamodel */,
+			);
+			currentVersion = F4CA7A54278C582F00FEEC6D /* ShoutOut.xcdatamodel */;
+			path = ShoutOut.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F2530B5B1D985E400029B14E /* Project object */;
 }
