@@ -3,10 +3,12 @@
 //  ShoutOut
 
 import UIKit
+import CoreData
 
 class ShoutOutDraftsViewController: UIViewController,
 									UITableViewDataSource,
 									UITableViewDelegate {
+    var managedObjectContext: NSManagedObjectContext!
 
 	@IBOutlet weak var tableView: UITableView!
 	
