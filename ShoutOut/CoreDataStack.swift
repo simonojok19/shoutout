@@ -31,3 +31,7 @@ extension URL {
             .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
     }
 }
+
+protocol ManagedObjectContextDependentType {
+    var managedObjectContext: NSManagedObjectContext! {get set}
+}

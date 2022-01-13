@@ -4,6 +4,7 @@
 
 import XCTest
 import UIKit
+import CoreData
 
 @testable import ShoutOut
 
@@ -43,6 +44,24 @@ class ShoutOutTests: XCTestCase {
 			// Put the code you want to measure the time of here.
 		}
 	}
+    
+    func testManagedObjectContext() {
+        let managedObjectContext = createMainContextInMemory()
+        self.systemUnderTest.managedObjectContext = managedObjectContext
+        XCTAssertNotNil(self.systemUnderTest.managedObjectContext)
+    }
+}
+
+func createMainContextInMemory() -> NSManagedObjectContext {
+    let modelURL = Bundle.main.url(forResource: "ShoutOut", withExtension: "momd")
+    guard let model = NSManagedObjectModel(contentsOf: modelURL!) else { fatalError("modal not found")}
+    
+    let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
+    try! psc.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
+    
+    let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+    context.persistentStoreCoordinator = psc
+    return context
 }
 
 extension UIViewController {

@@ -7,7 +7,8 @@ import CoreData
 
 class ShoutOutDraftsViewController: UIViewController,
 									UITableViewDataSource,
-									UITableViewDelegate {
+									UITableViewDelegate,
+                                    ManagedObjectContextDependentType {
     var managedObjectContext: NSManagedObjectContext!
 
 	@IBOutlet weak var tableView: UITableView!
@@ -46,6 +47,16 @@ class ShoutOutDraftsViewController: UIViewController,
 	
 	// MARK: - Navigation
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		
+        switch segue.identifier! {
+        case "shoutOutDetails":
+            let destinationVC = segue.destination as! ShoutOutDetailsViewController
+            destinationVC.managedObjectContext = self.managedObjectContext
+        case "addShoutOut":
+            let navigationController = segue.destination as! UINavigationController
+            let destinationVC = navigationController.viewControllers[0] as! ShoutOutEditorViewController
+            destinationVC.managedObjectContext = self.managedObjectContext
+        default:
+            break
+        }
 	}
 }
