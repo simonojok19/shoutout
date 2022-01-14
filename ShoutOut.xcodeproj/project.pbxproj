@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E1C6A5127919FAA00560E92 /* ShoutOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C6A5027919FAA00560E92 /* ShoutOut.swift */; };
+		6E1C6A532791FFF000560E92 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C6A522791FFF000560E92 /* Employee.swift */; };
 		F2530B671D985E400029B14E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2530B661D985E400029B14E /* AppDelegate.swift */; };
 		F2530B6C1D985E400029B14E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2530B6A1D985E400029B14E /* Main.storyboard */; };
 		F2530B6E1D985E400029B14E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2530B6D1D985E400029B14E /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E1C6A5027919FAA00560E92 /* ShoutOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoutOut.swift; sourceTree = "<group>"; };
+		6E1C6A522791FFF000560E92 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		F2530B631D985E400029B14E /* ShoutOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoutOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2530B661D985E400029B14E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2530B6B1D985E400029B14E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				F4CA7A53278C582E00FEEC6D /* ShoutOut.xcdatamodeld */,
+				6E1C6A5027919FAA00560E92 /* ShoutOut.swift */,
+				6E1C6A522791FFF000560E92 /* Employee.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -240,8 +246,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4CA7A55278C582F00FEEC6D /* ShoutOut.xcdatamodeld in Sources */,
+				6E1C6A532791FFF000560E92 /* Employee.swift in Sources */,
 				F2530B8C1D9861E40029B14E /* ShoutOutDetailsViewController.swift in Sources */,
 				F2530B671D985E400029B14E /* AppDelegate.swift in Sources */,
+				6E1C6A5127919FAA00560E92 /* ShoutOut.swift in Sources */,
 				F4CA7A59278C58C900FEEC6D /* CoreDataStack.swift in Sources */,
 				F2530B8E1D9861E40029B14E /* ShoutOutEditorViewController.swift in Sources */,
 				F2530B8D1D9861E40029B14E /* ShoutOutDraftsViewController.swift in Sources */,
