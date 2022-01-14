@@ -14,4 +14,5 @@ class ShoutOut: NSManagedObject {
     @NSManaged var message: String?
     @NSManaged var sentDate: Date?
     @NSManaged var shoutCategory: String
+    @NSManaged var toEmployee: Employee
 }
