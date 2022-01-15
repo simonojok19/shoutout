@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E0AECA32792D80E0076F368 /* SaveAccessDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0AECA22792D80E0076F368 /* SaveAccessDelete.swift */; };
 		6E1C6A5127919FAA00560E92 /* ShoutOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C6A5027919FAA00560E92 /* ShoutOut.swift */; };
 		6E1C6A532791FFF000560E92 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1C6A522791FFF000560E92 /* Employee.swift */; };
+		6E851E682792D0B900135C18 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E851E672792D0B900135C18 /* DataService.swift */; };
 		F2530B671D985E400029B14E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2530B661D985E400029B14E /* AppDelegate.swift */; };
 		F2530B6C1D985E400029B14E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2530B6A1D985E400029B14E /* Main.storyboard */; };
 		F2530B6E1D985E400029B14E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2530B6D1D985E400029B14E /* Assets.xcassets */; };
@@ -32,8 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E0AECA22792D80E0076F368 /* SaveAccessDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAccessDelete.swift; sourceTree = "<group>"; };
 		6E1C6A5027919FAA00560E92 /* ShoutOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoutOut.swift; sourceTree = "<group>"; };
 		6E1C6A522791FFF000560E92 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
+		6E851E672792D0B900135C18 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		F2530B631D985E400029B14E /* ShoutOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoutOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2530B661D985E400029B14E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2530B6B1D985E400029B14E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 				F2530B861D985E670029B14E /* View Controllers */,
 				F2530B661D985E400029B14E /* AppDelegate.swift */,
 				F4CA7A58278C58C900FEEC6D /* CoreDataStack.swift */,
+				6E851E672792D0B900135C18 /* DataService.swift */,
 			);
 			path = ShoutOut;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				F2530B7B1D985E410029B14E /* ShoutOutTests.swift */,
+				6E0AECA22792D80E0076F368 /* SaveAccessDelete.swift */,
 				F2530B7D1D985E410029B14E /* Info.plist */,
 			);
 			path = ShoutOutTests;
@@ -188,7 +194,7 @@
 				TargetAttributes = {
 					F2530B621D985E400029B14E = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 3534V3UJNS;
+						DevelopmentTeam = A9C65F4S84;
 						LastSwiftMigration = 1220;
 						ProvisioningStyle = Automatic;
 					};
@@ -245,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E851E682792D0B900135C18 /* DataService.swift in Sources */,
 				F4CA7A55278C582F00FEEC6D /* ShoutOut.xcdatamodeld in Sources */,
 				6E1C6A532791FFF000560E92 /* Employee.swift in Sources */,
 				F2530B8C1D9861E40029B14E /* ShoutOutDetailsViewController.swift in Sources */,
@@ -261,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2530B7C1D985E410029B14E /* ShoutOutTests.swift in Sources */,
+				6E0AECA32792D80E0076F368 /* SaveAccessDelete.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,11 +421,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3534V3UJNS;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A9C65F4S84;
 				INFOPLIST_FILE = ShoutOut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.pluralsight.ShoutOut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukwan.shoutout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -426,11 +437,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 3534V3UJNS;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A9C65F4S84;
 				INFOPLIST_FILE = ShoutOut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.pluralsight.ShoutOut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukwan.shoutout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
