@@ -11,6 +11,7 @@ class ShoutOutEditorViewController: UIViewController,
                                     UIPickerViewDelegate {
     
     var managedObjectContext: NSManagedObjectContext!
+    var shoutOut: ShoutOut!
     
 	@IBOutlet weak var toEmployeePicker: UIPickerView!
 	@IBOutlet weak var shoutCategoryPicker: UIPickerView!
@@ -37,6 +38,8 @@ class ShoutOutEditorViewController: UIViewController,
         self.toEmployeePicker.dataSource = self
         self.toEmployeePicker.delegate = self
         self.toEmployeePicker.tag = 0
+        
+        self.shoutOut = (NSEntityDescription.insertNewObject(forEntityName: ShoutOut.entityName, into: managedObjectContext) as! ShoutOut)
 		
 		messageTextView.layer.borderWidth = CGFloat(0.5)
 		messageTextView.layer.borderColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0).cgColor
@@ -45,11 +48,36 @@ class ShoutOutEditorViewController: UIViewController,
 	}
 
 	@IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        self.managedObjectContext.rollback()
 		self.dismiss(animated: true, completion: nil)
 	}
 	
 	@IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-		self.dismiss(animated: true, completion: nil)
+        let selectedEmployeeIndex = self.toEmployeePicker.selectedRow(inComponent: 0)
+        let selectedEmployee = self.employees[selectedEmployeeIndex]
+        self.shoutOut.toEmployee = selectedEmployee
+        
+        let selectedShoutCategoryIndex = self.shoutCategoryPicker.selectedRow(inComponent: 0)
+        let selectedShoutCategory = self.shoutCategories[selectedShoutCategoryIndex]
+        self.shoutOut.shoutCategory = selectedShoutCategory
+        
+        self.shoutOut.message = self.messageTextView.text
+        self.shoutOut.from = self.fromTextField.text ?? "Anonymous"
+        
+        do {
+            try self.managedObjectContext.save()
+            self.dismiss(animated: true, completion: nil)
+        } catch {
+            let alert = UIAlertController(title: "Trouble Saving", message: "Something went wrong trying the shoutout", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { [self] _ in
+                self.managedObjectContext.rollback()
+                self.shoutOut = (NSEntityDescription.insertNewObject(forEntityName: ShoutOut.entityName, into: self.managedObjectContext) as! ShoutOut)
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+		
+        
 	}
     
     

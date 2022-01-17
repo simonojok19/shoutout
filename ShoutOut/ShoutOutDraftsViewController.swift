@@ -10,12 +10,44 @@ class ShoutOutDraftsViewController: UIViewController,
 									UITableViewDelegate,
                                     ManagedObjectContextDependentType {
     var managedObjectContext: NSManagedObjectContext!
+    var fetchedResultsController: NSFetchedResultsController<ShoutOut>!
 
 	@IBOutlet weak var tableView: UITableView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        configureFetchedResultsController()
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            let alertController = UIAlertController(
+                title: "Loading ShoutOuts Failed",
+                message: "There was a problem loading the list of ShoutOuts drafts. Please try again.",
+                preferredStyle: .alert
+            )
+            let okAction = UIAlertAction(
+                title: "OK",
+                style: .default,
+                handler: nil
+            )
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
 	}
+    
+    func configureFetchedResultsController() {
+        let shoutOutFetchedRequest = NSFetchRequest<ShoutOut>(entityName: ShoutOut.entityName)
+        let lastNameSortDescriptor = NSSortDescriptor(key: #keyPath(ShoutOut.toEmployee.lastName), ascending: true)
+        let firstNameSortDescriptor = NSSortDescriptor(key: #keyPath(ShoutOut.toEmployee.lastName), ascending:  true)
+        shoutOutFetchedRequest.sortDescriptors = [lastNameSortDescriptor, firstNameSortDescriptor]
+        self.fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: shoutOutFetchedRequest,
+            managedObjectContext: self.managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+    }
 	
 	// MARK: TableView Data Source methods
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -28,14 +60,19 @@ class ShoutOutDraftsViewController: UIViewController,
 	
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 1
+        if let sections = self.fetchedResultsController.sections {
+            return sections[section].numberOfObjects
+        }
+        return 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "subtitleCell", for: indexPath)
+        
+        let shoutOut = self.fetchedResultsController.object(at: indexPath)
 		
-		cell.textLabel?.text = "Jane Sherman"
-		cell.detailTextLabel?.text = "Great Job!"
+        cell.textLabel?.text = "\(shoutOut.toEmployee.firstName) \(shoutOut.toEmployee.lastName)"
+        cell.detailTextLabel?.text = "\(shoutOut.shoutCategory)"
 		
 		return cell
 	}
@@ -51,6 +88,10 @@ class ShoutOutDraftsViewController: UIViewController,
         case "shoutOutDetails":
             let destinationVC = segue.destination as! ShoutOutDetailsViewController
             destinationVC.managedObjectContext = self.managedObjectContext
+            
+            let selectedindexPath = self.tableView.indexPathForSelectedRow!
+            let selectedShoutOut = self.fetchedResultsController.object(at: selectedindexPath)
+            destinationVC.shoutOut = selectedShoutOut
         case "addShoutOut":
             let navigationController = segue.destination as! UINavigationController
             let destinationVC = navigationController.viewControllers[0] as! ShoutOutEditorViewController

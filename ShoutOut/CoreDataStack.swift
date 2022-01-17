@@ -15,7 +15,7 @@ func createMainContext() -> NSManagedObjectContext {
     
     let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
     let storeURL = URL.documentURL
-        .appendingPathComponent("ShoutOut.sqlite")
+        .appendingPathComponent("ShoutOut-v2.sqlite")
     
     try! psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
     
