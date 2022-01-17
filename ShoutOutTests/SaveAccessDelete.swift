@@ -119,6 +119,22 @@ class SaveAccessDelete: XCTestCase {
         }
     }
     
+    func testSortShoutOuts() {
+        seedShoutOutsForTesting(managedObjectContext: self.managedContext)
+        let shoutOutsFetchRequests = NSFetchRequest<ShoutOut>(entityName: ShoutOut.entityName)
+        
+        do {
+            let shoutOuts = try self.managedContext.fetch(shoutOutsFetchRequests)
+            let sortDescriptor1 = NSSortDescriptor(key: #keyPath(ShoutOut.shoutCategory), ascending: true)
+            let sortDescriptor2 = NSSortDescriptor(key: #keyPath(ShoutOut.toEmployee.firstName), ascending: true)
+            let sortDescriptor3 = NSSortDescriptor(key: #keyPath(ShoutOut.toEmployee.lastName), ascending: true)
+            
+            shoutOutsFetchRequests.sortDescriptors = [sortDescriptor1, sortDescriptor2, sortDescriptor3]
+
+            printShoutOuts(shoutOuts: shoutOuts)
+        } catch _ {}
+    }
+    
     func printShoutOuts(shoutOuts: [ShoutOut]) {
         for shoutOut in shoutOuts {
             print("\n--------- ShoutOut -----------")
