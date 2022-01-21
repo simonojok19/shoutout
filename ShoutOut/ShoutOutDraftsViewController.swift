@@ -8,7 +8,9 @@ import CoreData
 class ShoutOutDraftsViewController: UIViewController,
 									UITableViewDataSource,
 									UITableViewDelegate,
-                                    ManagedObjectContextDependentType {
+                                    ManagedObjectContextDependentType,
+                                    NSFetchedResultsControllerDelegate
+{
     var managedObjectContext: NSManagedObjectContext!
     var fetchedResultsController: NSFetchedResultsController<ShoutOut>!
 
@@ -47,6 +49,7 @@ class ShoutOutDraftsViewController: UIViewController,
             sectionNameKeyPath: nil,
             cacheName: nil
         )
+        self.fetchedResultsController.delegate = self
     }
 	
 	// MARK: TableView Data Source methods
@@ -100,4 +103,50 @@ class ShoutOutDraftsViewController: UIViewController,
             break
         }
 	}
+    
+    // MARK: NSFetchedResultsControllerDeligate
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controller(
+        _ controller: NSFetchedResultsController<NSFetchRequestResult>,
+        didChange anObject: Any,
+        at indexPath: IndexPath?,
+        for type: NSFetchedResultsChangeType,
+        newIndexPath: IndexPath?
+    ) {
+        switch type {
+        case .insert:
+            if let inserIndexPath = newIndexPath {
+                self.tableView.insertRows(at: [inserIndexPath], with: .fade)
+            }
+        case .delete:
+            if let deletedIndexPath = indexPath {
+                self.tableView.deleteRows(at: [deletedIndexPath], with: .fade)
+            }
+        case .move:
+            
+            if let deletedIndexPath = indexPath {
+                self.tableView.deleteRows(at: [deletedIndexPath], with: .fade)
+            }
+            
+            if let inserIndexPath = newIndexPath {
+                self.tableView.insertRows(at: [inserIndexPath], with: .fade)
+            }
+        case .update:
+            if let updateIndexPath = indexPath {
+                let cell = self.tableView.cellForRow(at: updateIndexPath)
+                let updatedShoutOut = self.fetchedResultsController.object(at: updateIndexPath)
+                cell?.textLabel?.text = "\(updatedShoutOut.toEmployee.firstName) \(updatedShoutOut.toEmployee.lastName)"
+                cell?.detailTextLabel?.text = updatedShoutOut.message
+            }
+        @unknown default:
+            print("Error")
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.endUpdates()
+    }
 }

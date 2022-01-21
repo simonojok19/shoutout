@@ -39,13 +39,25 @@ class ShoutOutEditorViewController: UIViewController,
         self.toEmployeePicker.delegate = self
         self.toEmployeePicker.tag = 0
         
-        self.shoutOut = (NSEntityDescription.insertNewObject(forEntityName: ShoutOut.entityName, into: managedObjectContext) as! ShoutOut)
+        self.shoutOut = self.shoutOut ?? (NSEntityDescription.insertNewObject(forEntityName: ShoutOut.entityName, into: managedObjectContext) as! ShoutOut)
 		
 		messageTextView.layer.borderWidth = CGFloat(0.5)
 		messageTextView.layer.borderColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0).cgColor
 		messageTextView.layer.cornerRadius = 5
 		messageTextView.clipsToBounds = true
+        
+        setUIValues()
 	}
+    
+    func setUIValues() {
+        let selectedEmployeeRow = self.employees.firstIndex(of: self.shoutOut.toEmployee) ?? 0
+        self.toEmployeePicker.selectRow(selectedEmployeeRow, inComponent: 0, animated: false)
+        let selectedShoutOutCategoryRow = self.shoutCategories.firstIndex(of: self.shoutOut.shoutCategory) ?? 0
+        self.shoutCategoryPicker.selectRow(selectedShoutOutCategoryRow, inComponent: 0, animated: false)
+        self.messageTextView.text = self.shoutOut.message
+        self.fromTextField.text = self.shoutOut.from
+        
+    }
 
 	@IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
         self.managedObjectContext.rollback()

@@ -16,13 +16,41 @@ class ShoutOutDetailsViewController: UIViewController, ManagedObjectContextDepen
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUIValues()
+        
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name.NSManagedObjectContextDidSave,
+            object: nil,
+            queue: nil,
+            using: { (notification : Notification) in
+                if let updatedShoutOuts = notification.userInfo?[NSUpdatedObjectsKey] as? Set<ShoutOut> {
+                    self.shoutOut = updatedShoutOuts.first
+                    self.setUIValues()
+                }
+                
+            })
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: NSNotification.Name.NSManagedObjectContextDidSave,
+            object: nil
+        )
     }
 	
+    func setUIValues() {
+        self.shoutCategoryLabel.text = self.shoutOut.shoutCategory
+        self.messageTextView.text = self.shoutOut.message
+        self.fromLabel.text = self.shoutOut.from
+    }
+    
 	// MARK: - Navigation
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navigationController = segue.destination as! UINavigationController
         let destitionController = navigationController.viewControllers[0] as! ShoutOutEditorViewController
         destitionController.managedObjectContext = self.managedObjectContext
+        destitionController.shoutOut = self.shoutOut
 	}
     
     @IBAction func deleteAction(_ sender: UIBarButtonItem) {
